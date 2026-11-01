@@ -4,17 +4,35 @@
              x:Class="UnityBundleInspector.Views.MainView"
              x:DataType="vm:MainViewModel">
     
-    <StackPanel HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Spacing="10">
-        
-        <TextBlock Text="{Binding Greeting}"
-                   FontSize="24"
-                   FontWeight="Bold"/>
-        
-        <TextBlock Text="Unity Bundle Inspector"
-                   FontSize="16"/>
-        
-    </StackPanel>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Menu Grid.Column="0">
+                <MenuItem Header="File">
+                    <MenuItem Header="Open File" />
+                    <MenuItem Header="Open Folder" />
+                    <Separator />
+                    <MenuItem Header="Exit" />
+                </MenuItem>
+                <MenuItem Header="Options">
+                    <MenuItem Header="Enable Preview" ToggleType="CheckBox" />
+                </MenuItem>
+            </Menu>
+            <Border Grid.Column="1" />
+            <SplitButton Grid.Column="2" Content="Toggle">
+                <SplitButton.Flyout>
+                    <MenuFlyout Placement="BottomEdgeAlignedRight">
+                        <MenuItem Header="System" />
+                        <MenuItem Header="Light" />
+                        <MenuItem Header="Dark" />
+                    </MenuFlyout>
+                </SplitButton.Flyout>
+            </SplitButton>
+        </Grid>
+    </DockPanel>
     
 </UserControl>
